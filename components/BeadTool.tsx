@@ -33,6 +33,7 @@ export function BeadTool({ initialImage }: BeadToolProps) {
   const [processing, setProcessing] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const [cellSize, setCellSize] = useState(14);
+  const [showCodes, setShowCodes] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -84,12 +85,12 @@ export function BeadTool({ initialImage }: BeadToolProps) {
   // Render preview canvas when result changes
   useEffect(() => {
     if (!result || !canvasRef.current) return;
-    const canvas = renderPreview(result, palette, cellSize);
+    const canvas = renderPreview(result, palette, cellSize, showCodes);
     const ctx = canvasRef.current.getContext('2d')!;
     canvasRef.current.width = canvas.width;
     canvasRef.current.height = canvas.height;
     ctx.drawImage(canvas, 0, 0);
-  }, [result, palette, cellSize]);
+  }, [result, palette, cellSize, showCodes]);
 
   if (!image) {
     return (
@@ -176,6 +177,18 @@ export function BeadTool({ initialImage }: BeadToolProps) {
               className="flex-1"
             />
             <span className="text-xs text-gray-400 w-10 text-right">{cellSize}px</span>
+          </div>
+
+          <div className="mt-2 flex items-center gap-2">
+            <label className="flex items-center gap-2 text-xs text-gray-600 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={showCodes}
+                onChange={(e) => setShowCodes(e.target.checked)}
+                className="w-4 h-4 accent-brand-600"
+              />
+              显示颜色编号（格子内显示数字，缩放≥14px 时生效）
+            </label>
           </div>
         </div>
 
