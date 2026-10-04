@@ -1,0 +1,14 @@
+---
+description: "AI Coding OS v1.0 cross-tool project protocol. AGENTS.md is canonical; use this adapter only to ensure the project protocol and memory are considered."
+alwaysApply: true
+---
+
+This project uses AI Coding OS v1.0.
+
+The canonical engineering protocol is `AGENTS.md`. Cursor already supports and loads root `AGENTS.md`; do not duplicate it here.
+
+For project-specific long-term context, consult `PROJECT_MEMORY.md` using its Memory Index and load only relevant sections.
+
+Follow the repository's existing architecture and make minimal, verifiable changes.
+Do not repeat verified failed approaches without checking whether relevant conditions changed.
+Never expose or store secrets.
