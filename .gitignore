@@ -36,3 +36,5 @@ next-env.d.ts
 # test artifacts
 test-image.png
 
+
+.vercel
